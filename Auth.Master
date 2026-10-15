@@ -1,0 +1,53 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Auth.Master.cs" Inherits="janmatbharat.AuthMaster" %>
+<!DOCTYPE html>
+<html lang="hi">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%: Page.Title %> — जन-मत भारत</title>
+    <link rel="stylesheet" href="<%=ResolveUrl("~/Content/Site.css")%>" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body class="auth-body">
+<form id="frmAuth" runat="server">
+
+    <!-- ══ SLIM TOP BAR ══ -->
+    <header class="auth-topbar">
+        <a class="auth-brand" id="lnkAuthBrand" href='<%=ResolveUrl("~/Default.aspx")%>'>जन-मत भारत</a>
+        <div class="auth-topbar-right">
+            <asp:ContentPlaceHolder ID="TopBarLink" runat="server">
+                <span class="auth-topbar-text">Already have an account?</span>
+                <a href='<%=ResolveUrl("~/Login.aspx")%>' class="auth-toplink" id="lnkTopLogin">Login &rarr;</a>
+            </asp:ContentPlaceHolder>
+        </div>
+    </header>
+
+    <!-- ══ CARD AREA ══ -->
+    <main class="auth-main">
+        <div class="auth-card-container">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    </main>
+
+    <!-- ══ FOOTER (Matching Wireframe) ══ -->
+    <footer class="auth-footer">
+        <div class="auth-footer-brand">जन-मत भारत</div>
+        <div class="auth-footer-tagline">आपका वोट &bull; आपका अधिकार &bull; आपका भविष्य</div>
+        <div class="auth-footer-links">
+            <a href='<%=ResolveUrl("~/Default.aspx")%>' id="lnkFooterHome">Home</a>
+            <a href='<%=ResolveUrl("~/About.aspx")%>' id="lnkFooterMission">Our Mission</a>
+            <a href='<%=ResolveUrl("~/CastVote.aspx")%>' id="lnkFooterVote">Cast Your Vote</a>
+            <a href='<%=ResolveUrl("~/Register.aspx")%>' id="lnkFooterRegister">Citizen Registration</a>
+            <a href='<%=ResolveUrl("~/Login.aspx")%>' id="lnkFooterLogin">Secure Sign-In</a>
+        </div>
+        <div class="auth-footer-copy">
+            &copy; 2026 जन-मत भारत
+        </div>
+        <div class="auth-footer-dev">
+            Developed with <span class="heart-red">&hearts;</span> for Bharat
+        </div>
+    </footer>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.Master.cs" Inherits="janmatbharat.AdminMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title><%: Page.Title %> &mdash; Admin | जन-मत भारत</title>
+    <link rel="stylesheet" href="<%=ResolveUrl("~/Content/Site.css")%>" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body class="adm-body">
+<form id="frmAdmin" runat="server">
+<%
+    string pageName = System.IO.Path.GetFileName(Request.Path) ?? "";
+%>
+
+    <div class="adm-layout">
+
+        <!-- ══ 250PX DARK NAVY SIDEBAR ══ -->
+        <aside class="adm-sidebar">
+            <div>
+                <!-- Brand block -->
+                <div class="adm-sidebar-brand">
+                    <div class="adm-brand-saffron">जन-मत भारत</div>
+                    <div class="adm-brand-gov">JAN-MAT BHARAT GOVERNANCE</div>
+                </div>
+
+                <!-- Navigation menu -->
+                <nav>
+                    <ul class="adm-nav">
+                        <li>
+                            <a href='<%=ResolveUrl("~/Admin/Dashboard.aspx")%>' id="lnkNavDashboard"
+                               class='<%= pageName.Equals("Dashboard.aspx", StringComparison.OrdinalIgnoreCase) ? "adm-nav-link active" : "adm-nav-link" %>'>
+                                <span>&#x1F4CA;</span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='<%=ResolveUrl("~/Admin/VoterRegistry.aspx")%>' id="lnkNavVoterRegistry"
+                               class='<%= pageName.Equals("VoterRegistry.aspx", StringComparison.OrdinalIgnoreCase) ? "adm-nav-link active" : "adm-nav-link" %>'>
+                                <span>&#x1F465;</span>
+                                <span>Voter Registry</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='<%=ResolveUrl("~/Admin/BallotRecords.aspx")%>' id="lnkNavBallotRecords"
+                               class='<%= pageName.Equals("BallotRecords.aspx", StringComparison.OrdinalIgnoreCase) ? "adm-nav-link active" : "adm-nav-link" %>'>
+                                <span>&#x1F5F3;&#xFE0F;</span>
+                                <span>Ballot Records</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='<%=ResolveUrl("~/Admin/ContentManagement.aspx")%>' id="lnkNavPortalContent"
+                               class='<%= pageName.Equals("ContentManagement.aspx", StringComparison.OrdinalIgnoreCase) ? "adm-nav-link active" : "adm-nav-link" %>'>
+                                <span>&#x1F4C4;</span>
+                                <span>Portal Content</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='<%=ResolveUrl("~/Admin/Settings.aspx")%>' id="lnkNavSystemConfig"
+                               class='<%= pageName.Equals("Settings.aspx", StringComparison.OrdinalIgnoreCase) ? "adm-nav-link active" : "adm-nav-link" %>'>
+                                <span>&#x2699;&#xFE0F;</span>
+                                <span>System Config</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='<%=ResolveUrl("~/Admin/SupportInbox.aspx")%>' id="lnkNavSupportInbox"
+                               class='<%= pageName.Equals("SupportInbox.aspx", StringComparison.OrdinalIgnoreCase) ? "adm-nav-link active" : "adm-nav-link" %>'>
+                                <span>&#x1F4E5;</span>
+                                <span>Support Inbox</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Sign Out in red/coral at bottom -->
+            <div class="adm-sidebar-foot">
+                <a href='<%=ResolveUrl("~/Admin/AdminLogin.aspx")%>' id="lnkSidebarSignOut" class="adm-sidebar-signout">
+                    <span>&#x1F6AA;</span>
+                    <span>Sign Out</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- ══ RIGHT CONTENT AREA ══ -->
+        <div class="adm-content-area">
+
+            <!-- Top bar (white with thin saffron line under it) -->
+            <header class="adm-topbar">
+                <div class="adm-topbar-left">
+                    <span>जन-मत भारत</span>
+                    <span>|</span>
+                    <span>&#x1F6E1;&#xFE0F; Admin Panel</span>
+                </div>
+                <div class="adm-topbar-right">
+                    <div class="adm-admin-chip">
+                        <span>&#x1F464;</span>
+                        <span>Admin</span>
+                    </div>
+                    <a href='<%=ResolveUrl("~/Admin/AdminLogin.aspx")%>' id="lnkTopbarSignOut" class="adm-signout-btn">Sign Out</a>
+                </div>
+            </header>
+
+            <!-- Main area (light grey #F4F6FA with 24px padding) -->
+            <main class="adm-main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </main>
+
+        </div>
+
+    </div>
+
+</form>
+</body>
+</html>
